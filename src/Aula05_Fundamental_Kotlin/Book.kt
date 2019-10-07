@@ -1,49 +1,41 @@
 package Aula05_Fundamental_Kotlin
 
-fun main() {
+const val NUMBER_BOOKS = 3
+const val MAX_NUMBER_BOOKS = 2
 
-    val findBook = FindBook()
+class Book(val title: String, val author: String, val year: Int, var pages: Int) {
 
-    val retorno = findBook.pair("Kotlin", "Ricardo")
-    println("Impressão ${retorno.first} e do ${retorno.second}")
-    println()
+    val grassPages: Double = 1.5
 
-    val (title, author) = findBook.pair("Kotlin", "Ricardo")
-    println("Aqui está o livro $title, escrito por $author.")
-    println()
-
-    val (title2, author2) = findBook.pair("ação", "Marcos")
-    println("Aqui está o livro $title2, escrito por $author2.")
-    println()
-
-    val (title3, author3, year3) = findBook.triple("Android", "Nelson", 2019)
-    println("Aqui está o livro $title3, escrito por $author3 em $year3.")
-}
-
-data class Book(val title: String, val author: String, val year: Int = 0)
-
-class FindBook {
-
-    private val livros: List<Book> = listOf(
-        Book("Android Essencial com Kotlin", "Ricardo Lecheta", 2017),
-        Book("Kotlin em ação", "Marcos da Fonseca", 2018),
-        Book("Dominando o Android com Kotlin", "Nelson Glauber", 2019)
-    )
-
-    fun pair(title: String, author: String): Pair<String, String> {
-
-        val result = livros.filter {
-            it.title.contains(title) && it.author.contains(author)
-        }.first()
-
-        return Pair(result.title, result.author)
+    companion object {
+        const val BASE_URL = "https://www.google.com/search?q="
     }
 
-    fun triple(title: String, author: String, year: Int): Triple<String, String, Int> {
-        val result = livros.filter {
-            it.title.contains(title) && it.author.contains(author) && it.year == year
-        }.first()
+    fun getTitleAuthor(): Pair<String, String> {
+        return (title to author)
+    }
 
-        return Triple(result.title, result.author, result.year)
+    fun getTitleAuthorYear(): Triple<String, String, Int> {
+        return Triple(title, author, year)
+    }
+
+    fun canBorrow(numberBooks: Int) = (numberBooks <= MAX_NUMBER_BOOKS)
+
+    fun printUrl() {
+        println(BASE_URL + title.replace(' ', '-')) // + ".html"
+    }
+
+    fun getWeightBook(): Double = this.weight()
+}
+
+fun Book.weight(): Double {
+    return pages.times(grassPages)
+}
+
+fun Book.tornPages(pagesDamaged: Int) {
+    if (pages >= pagesDamaged && pagesDamaged > 0) {
+        pages -= pagesDamaged
+    } else {
+        pages = 0
     }
 }

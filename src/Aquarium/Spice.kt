@@ -40,10 +40,10 @@ abstract class Spice(val name: String, val spiciness: String = "mild") {
  */
 }
 
-class Curry(val spiciness: String = "mild") {}
-class Pepper(val spiciness: String = "medium") {}
-class Cayenne(val spiciness: String = "spicy") {}
-class Ginger(val spiciness: String = "mild") {}
-class RedCurry(val spiciness: String = "medium") {}
-class GreenCurry(val spiciness: String = "mild") {}
-class HotPepper(val spiciness: String = "extremely spicy") {}
+class Curry(val spiciness: String = "mild")
+class Pepper(val spiciness: String = "medium")
+class Cayenne(val spiciness: String = "spicy")
+class Ginger(val spiciness: String = "mild")
+class RedCurry(val spiciness: String = "medium")
+class GreenCurry(val spiciness: String = "mild")
+class HotPepper(val spiciness: String = "extremely spicy")

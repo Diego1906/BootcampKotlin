@@ -66,7 +66,7 @@ fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
 }
 
 class ExtensionsCompanion {
-    companion object {}
+    companion object
 }
 
 fun ExtensionsCompanion.Companion.printCompanion() {
