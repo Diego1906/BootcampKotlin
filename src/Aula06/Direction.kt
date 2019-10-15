@@ -1,5 +1,5 @@
 package Aula06
 
-enum class Directions {
+enum class Direction {
     NORTH, SOUTH, EAST, WEST, START, END
 }
